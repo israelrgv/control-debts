@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { AuthService } from './core/services/auth.service';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +18,6 @@ import { AsyncPipe, NgIf } from '@angular/common';
   `
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'FEDEMYPE';
   authService = inject(AuthService);
 }

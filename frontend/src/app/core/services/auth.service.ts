@@ -23,6 +23,7 @@ export class AuthService {
 
   login(username: string, password: string): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/auth/login`, { username, password })
+    // return this.http.post<any>(`http://localhost:8080/api/auth/login`, { username, password })
       .pipe(
         tap(response => {
           if (response && response.token) {
