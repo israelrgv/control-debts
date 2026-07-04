@@ -1,7 +1,7 @@
 [build]
   base = "frontend"
-  command = "ng build --configuration production"
-  publish = "dist/frontend"
+  command = "npm install && ng build --configuration production"
+  publish = "dist/frontend/browser"
 
 [build.environment]
   API_URL = "https://control-debts.onrender.com"
