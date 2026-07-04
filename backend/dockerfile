@@ -1,14 +1,16 @@
-# Usa Eclipse Temurin con JDK 17 (basado en Alpine)
+# Usa Eclipse Temurin con JDK 17 y Maven incluido
 FROM eclipse-temurin:17-jdk-alpine AS build
 
-# Copia el código fuente y el wrapper de Maven
-WORKDIR /app
-COPY .mvn/ .mvn/
-COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline
+# Instala Maven (aunque algunas imágenes ya lo traen)
+RUN apk add --no-cache maven
 
+# Copia el código fuente
+WORKDIR /app
+COPY pom.xml ./
 COPY src ./src
-RUN ./mvnw clean package -DskipTests
+
+# Compila la aplicación
+RUN mvn clean package -DskipTests
 
 # Segunda etapa: imagen ligera para ejecutar
 FROM eclipse-temurin:17-jre-alpine
