@@ -13,7 +13,7 @@ export class AuthService {
   private router = inject(Router);
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
-  private apiUrl = config.apiUrl;
+  private apiUrl = environment.apiUrl;
 
   constructor() {
     const savedUser = localStorage.getItem('user');
