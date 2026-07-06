@@ -13,6 +13,7 @@ export class AuthService {
   private router = inject(Router);
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
+  private apiUrl = config.apiUrl;
 
   constructor() {
     const savedUser = localStorage.getItem('user');
@@ -22,7 +23,7 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/auth/login`, { username, password })
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, { username, password })
     // return this.http.post<any>(`http://localhost:8080/api/auth/login`, { username, password })
       .pipe(
         tap(response => {
