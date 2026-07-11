@@ -1,9 +1,9 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { User } from '../models/user.model';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/auth/login`, { username, password })
+    return this.http.post<any>(`${this.apiUrl}/api/auth/login`, { username, password })
     // return this.http.post<any>(`http://localhost:8080/api/auth/login`, { username, password })
       .pipe(
         tap(response => {
